@@ -3,15 +3,17 @@ import { Button, Col, Container, Row, Table } from 'react-bootstrap'
 import { getCategories, deleteCategory } from '../../../utils/CategoryUtils'
 import { LinkContainer } from 'react-router-bootstrap'
 
+import { toast } from 'react-toastify';
 
 const CategoryPage = ({ history }) => {
     const [categories, setCategories] = useState([])
+
+    const loadCategories = () => getCategories().then(c => setCategories(c.data))
 
     useEffect(() => {
         loadCategories()
     }, [])
 
-    const loadCategories = () => getCategories().then(c => setCategories(c.data))
 
     const addProductPage = () => {
         history.push('/category/new')
@@ -21,6 +23,7 @@ const CategoryPage = ({ history }) => {
         deleteCategory(id)
             .then(res => {
                 console.log(res)
+                toast.success("Category deleted successfully!")
                 loadCategories()
             })
             .catch(error => console.log(error))

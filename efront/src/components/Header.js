@@ -17,9 +17,13 @@ const Header = () => {
                                 title="Admin"
                                 id="admin"
                             >
-                                <NavDropdown.Item className="admin-item">
-                                    Catégories
-                                </NavDropdown.Item>
+                                <LinkContainer
+                                    to="/admin/categories"
+                                >
+                                    <NavDropdown.Item className="admin-item">
+                                        Catégories
+                                    </NavDropdown.Item>
+                                </LinkContainer>
 
                             </NavDropdown>
                             <LinkContainer to="/login">

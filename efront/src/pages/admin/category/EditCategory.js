@@ -3,6 +3,8 @@ import { Container } from 'react-bootstrap'
 import CategoryForm from '../../../components/forms/CategoryForm'
 import { getCategory, updateCategory } from '../../../utils/CategoryUtils'
 
+import { toast } from 'react-toastify';
+
 
 const EditCategory = ({ history, match }) => {
 
@@ -21,7 +23,8 @@ const EditCategory = ({ history, match }) => {
         updateCategory(match.params.id, { name })
             .then(res => {
                 console.log(res)
-                history.push('/')
+                toast.success("Category updated successfully!")
+                history.push('/admin/categories')
             })
             .catch(err => console.log(err))
     }
