@@ -11,6 +11,7 @@ const app = express()
 
 // routes import
 const categoryRoutes = require('./routes/categoryRoutes')
+const productRoutes = require('./routes/productRoutes')
 
 
 // middlewares
@@ -32,6 +33,7 @@ mongoose.connect(process.env.DATABASE, {
 
 // routes
 app.use("/api", categoryRoutes)
+app.use("/api", productRoutes)
 
 const port = process.env.PORT || 8000
 
